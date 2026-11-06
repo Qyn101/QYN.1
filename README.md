@@ -34,14 +34,20 @@ Harness 自带的 `/` 触发能搜，但你得先知道搜什么，也记不住"
 
 ```
 请帮我安装这个 DeepSeek Harness 插件：
-
 https://github.com/Qyn101/QYN.1
 
-请先阅读仓库里的 README 和 package.json，检查所需环境，把它装进当前 profile 并启用，
-最后确认输入框左下角出现了「技能」按钮。遇到需要我操作的步骤，请告诉我。
+1. 把仓库 clone 或下载 ZIP 解压到任意位置。它是纯 JS 的 Cordis bundle：零依赖、没有构建步骤，
+   不需要 npm install。
+2. 用 plugin_manager → install_bundle 安装，target 填含 package.json 的那一层（不是它的上级目录）。
+3. 如果返回 restart-required，请停下来告诉我：需要重启 DeepSeek Harness。
+4. 重启后请自查：cordis_inspect_query（client / Slots / listSubTree，root=conversation.input.left）
+   里有 id=dsh-skill-picker 的 occupant 且 active=true 就算成功；不在就把报错原文贴给我，不要猜。
+5. 卸载用 remove_bundle @local/dsh-skill-picker。
+
+只有我能做的操作（登录、重启）请停下来告诉我。
 ```
 
-Agent 会自己 clone、调用 `plugin_manager → install_bundle`、提示你重启 Harness，装完还会去确认按钮在不在。中途要登录 GitHub、要重启这类事，它会停下来告诉你。
+Agent 会自己 clone、调用 `plugin_manager → install_bundle`、提示你重启 Harness，重启后还会用 `cordis_inspect_query` 自查 slot 有没有挂上（而不是靠"看截图"——它看不到你的窗口）。中途要登录 GitHub、要重启这类事，它会停下来告诉你。
 
 ### 方式二：手动装
 
