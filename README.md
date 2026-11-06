@@ -95,4 +95,4 @@ git clone https://github.com/Qyn101/QYN.1.git
 
 ## License
 
-未指定。要开源给他人复用的话，建议补一个 `LICENSE`（MIT 之类）。
+MIT © 2026 Qyn101 —— 见 [LICENSE](LICENSE)。修改、分发、商用都行，保留版权声明即可。
