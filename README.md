@@ -28,6 +28,23 @@ Harness 自带的 `/` 触发能搜，但你得先知道搜什么，也记不住"
 
 插件是纯 JS 的 Cordis 插件包，没有依赖、没有构建步骤。
 
+### 方式一：把地址丢给 Agent，让它自己装（推荐）
+
+在 DeepSeek Harness 里新建一条消息，把下面这段粘进去：
+
+```
+请帮我安装这个 DeepSeek Harness 插件：
+
+https://github.com/Qyn101/QYN.1
+
+请先阅读仓库里的 README 和 package.json，检查所需环境，把它装进当前 profile 并启用，
+最后确认输入框左下角出现了「技能」按钮。遇到需要我操作的步骤，请告诉我。
+```
+
+Agent 会自己 clone、调用 `plugin_manager → install_bundle`、提示你重启 Harness，装完还会去确认按钮在不在。中途要登录 GitHub、要重启这类事，它会停下来告诉你。
+
+### 方式二：手动装
+
 ```bash
 git clone https://github.com/Qyn101/QYN.1.git
 ```
